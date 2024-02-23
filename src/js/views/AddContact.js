@@ -7,17 +7,12 @@ export const AddContact = () => {
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [address, setAddress] = useState("");
-	const [agenda, setAgenda] = useState("");
-	console.log(name);
-	console.log(email);
-	console.log(phone);
-	console.log(address);
-	console.log(agenda);
+	const [agenda, setAgenda] = useState("osifrankpeter_list");
 
 	const { store, actions } = useContext(Context);
 
-	function NewContact() {
-		actions.createContact();
+	function newContact() {
+		actions.createContact(name, email, agenda, address, phone);
 	}
 
 	return (
@@ -65,7 +60,7 @@ export const AddContact = () => {
 							value={address}
 						/>
 					</div>
-					<button type="button" className="btn btn-primary form-control" onClick={NewContact}>
+					<button type="button" className="btn btn-primary form-control" onClick={newContact}>
 						save
 					</button>
 					<Link className="mt-3 w-100 text-center" to="/">

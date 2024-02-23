@@ -5,13 +5,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getAgenda: () => {
-				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/my_super_agenda")
+				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/osifrankpeter_list")
 					.then(response => response.json())
 					.then(data => setStore({ contacts: data }))
 					.catch(error => console.log(error));
 			},
+			// deleteContact: () => {
+			// 	fetch("https://playground.4geeks.com/apis/fake/contact/", {
+			// 		method: "DELETE"
+			// 	})
+			// 		.then(response => response.json())
+			// 		.then(data => setStore(data))
+			// 		.catch(error => console.log(error));
+			// },
 
-			createContact: (name, email, phone, address, agenda) => {
+			createContact: (name, email, agenda, address, phone) => {
 				fetch("https://playground.4geeks.com/apis/fake/contact/", {
 					method: "POST",
 					body: JSON.stringify({
@@ -26,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				})
 					.then(response => response.json())
-					.then(data => console.log({ contacts: data }))
+					.then(data => console.log(data))
 					.catch(error => console.log(error));
 			}
 		}
