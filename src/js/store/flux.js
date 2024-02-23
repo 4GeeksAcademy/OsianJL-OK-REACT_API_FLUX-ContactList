@@ -10,14 +10,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ contacts: data }))
 					.catch(error => console.log(error));
 			},
-			// deleteContact: () => {
-			// 	fetch("https://playground.4geeks.com/apis/fake/contact/", {
-			// 		method: "DELETE"
-			// 	})
-			// 		.then(response => response.json())
-			// 		.then(data => setStore(data))
-			// 		.catch(error => console.log(error));
-			// },
+			deleteContact: id => {
+				fetch("https://playground.4geeks.com/apis/fake/contact/" + id, {
+					method: "DELETE"
+				})
+					.then(response => response.json())
+					.then(data => console.log(data))
+					.catch(error => console.log(error));
+			},
 
 			createContact: (name, email, agenda, address, phone) => {
 				fetch("https://playground.4geeks.com/apis/fake/contact/", {

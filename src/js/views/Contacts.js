@@ -18,6 +18,9 @@ export const Contacts = () => {
 	useEffect(() => {
 		actions.getAgenda();
 	}, []);
+	// useEffect(() => {
+	// 	actions.deleteContact();
+	// }, []);
 	console.log(store.contacts);
 	return (
 		<div className="container">
