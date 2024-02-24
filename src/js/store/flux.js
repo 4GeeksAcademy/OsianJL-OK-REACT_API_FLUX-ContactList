@@ -14,7 +14,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://playground.4geeks.com/apis/fake/contact/" + id, {
 					method: "DELETE"
 				})
-					.then(response => response.json())
+					.then(response => {
+						if (response.status === 201) {
+							getActions().getAgenda();
+						}
+						return response.json();
+					})
 					.then(data => console.log(data))
 					.catch(error => console.log(error));
 			},
@@ -34,6 +39,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				})
 					.then(response => response.json())
+					.then(data => console.log(data))
+					.catch(error => console.log(error));
+			},
+			updateContact: (name, email, agenda, address, phone, id) => {
+				fetch("https://playground.4geeks.com/apis/fake/contact/" + id, {
+					method: "PUT",
+					body: JSON.stringify({
+						full_name: name,
+						email: email,
+						agenda_slug: agenda,
+						address: address,
+						phone: phone
+					}),
+					headers: {
+						"Content-type": "application/json"
+					}
+				})
+					.then(response => {
+						if (response.status === 201) {
+							getActions().getAgenda();
+						}
+						return response.json();
+					})
 					.then(data => console.log(data))
 					.catch(error => console.log(error));
 			}

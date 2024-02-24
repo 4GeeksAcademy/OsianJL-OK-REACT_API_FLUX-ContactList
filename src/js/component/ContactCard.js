@@ -6,9 +6,6 @@ import { useContext } from "react";
 import { Context } from "../store/appContext";
 
 export const ContactCard = props => {
-	const [state, setState] = useState({
-		//initialize state here
-	});
 	const { store, actions } = useContext(Context);
 	return (
 		<li className="list-group-item">
@@ -18,7 +15,7 @@ export const ContactCard = props => {
 				</div>
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
-						<button className="btn">
+						<button className="btn" onClick={() => props.onEdit()}>
 							<i className="fas fa-pencil-alt mr-3" />
 						</button>
 						<button className="btn" onClick={() => props.onDelete()}>
@@ -51,20 +48,14 @@ export const ContactCard = props => {
 	);
 };
 
-/**
- * Define the data-types for
- * your component's properties
- **/
 ContactCard.propTypes = {
 	history: PropTypes.object,
 	onDelete: PropTypes.func,
-	infoContact: PropTypes.object
+	infoContact: PropTypes.object,
+	onEdit: PropTypes.func
 };
 
-/**
- * Define the default values for
- * your component's properties
- **/
 ContactCard.defaultProps = {
-	onDelete: null
+	onDelete: null,
+	onEdit: null
 };

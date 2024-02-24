@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
+
 export const AddContact = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
