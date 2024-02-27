@@ -11,8 +11,8 @@ export const Modal = props => {
 		actions.deleteContact(props.id);
 		props.onClose();
 	}
+
 	useEffect(() => {
-		console.log("aqui estamos");
 		actions.getAgenda();
 	}, []);
 	return (
